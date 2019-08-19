@@ -44,7 +44,7 @@ def payment():
 
 	# Pago, esta vez agregando datos del cliente
 	response = tc.post('api/sessions', {
-		'description' : "Curso Aden",
+		'description' : "Pago único",
 		'success_url' : "http://127.0.0.1:5000/tucuota/callback?course_id=5", # esta uri no será visible hasta que se complete el flujo del checkout y el cliente no la verá nunca.
 
 		'kind' : "payment",
@@ -70,18 +70,19 @@ def payment():
 def subscription():
 	tc.sandbox = True
 
-	# Pago, esta vez agregando datos del cliente
+	# Suscripción, esta vez agregando solo id de cliente
 	response = tc.post('api/sessions', {
-		'description' : "Curso Aden",
+		'description' : "Curso",
 		'success_url' : "http://127.0.0.1:5000/tucuota/callback?course_id=5", # esta uri no será visible hasta que se complete el flujo del checkout y el cliente no la verá nunca.
 
-		'kind' : "payment",
+		'kind' : "subscription",
 		'amount' : 12000, # Monto del pago
-		'max_installments' : 3, # cantidad de cuotas a elegir
+		'count' : 3, # cantidad de repeticiones de la suscripción
 
 		'customer_id': 1544,
-		'customer_name': "Juan Ramonda",
-		'customer_email': "juanchoramonda@gmail.com",
+
+		'interval_unit': "monthly",
+
 
 		'metadata' : { # se pueden agregar acá cualquier tipo de metadatos. La suscripción o pagos que genere el checkout también tendrán la misma metadata
 			'course_id': 5,
