@@ -63,7 +63,7 @@ def payment():
 	uri = response.get('data', {}).get('public_uri')
 
 	return redirect(uri)
-	return jsonify(response)
+	# return jsonify(response)
 
 
 @app.route('/tucuota/subscription')
@@ -76,8 +76,8 @@ def subscription():
 		'success_url' : "http://127.0.0.1:5000/tucuota/callback?course_id=5", # esta uri no será visible hasta que se complete el flujo del checkout y el cliente no la verá nunca.
 
 		'kind' : "subscription",
-		'amount' : 12000, # Monto del pago
-		'count' : 3, # cantidad de repeticiones de la suscripción
+		'amount' : 125, # Monto del pago
+		'count' : 12, # cantidad de repeticiones de la suscripción
 
 		'customer_id': 1544,
 
