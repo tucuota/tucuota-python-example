@@ -80,7 +80,7 @@ class TC(object):
 		self.token = token
 
 	def baseUri(self):
-		return 'https://sandbox.tucuota.com/' if self.sandbox else 'https://www.tucuota.com/'
+		return 'https://sandbox.tucuota.com/' if self.sandbox else 'https://tucuota.com/'
 
 	def headers(self):
 		return {
